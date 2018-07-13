@@ -257,7 +257,7 @@ function updatePushNotificationsEnabled(pushNotificationsEnabled) {
 // TODO complete the implementation by displaying a Snackbar message
 function copyToClipboard(event) {
 
-	console.log(event);
+	console.log("Token copied to the clipboard");
 	
 }
 
