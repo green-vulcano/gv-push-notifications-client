@@ -8,59 +8,72 @@ This is a React application used to test the subscription to a push notification
 
 In order to run the Push Notifications client, you need to install the following frameworks:
 
-- Node.js v9.8.0 or higher ([installation docs](https://nodejs.org/en/download/package-manager/))
-- Yarn package manager v1.7.0 or higher ([installation docs](https://yarnpkg.com/lang/en/docs/install))
+- Node.js v9.8.0 or higher ([installation docs](https://nodejs.org/en/download/package-manager/));
+- Yarn package manager v1.7.0 or higher ([installation docs](https://yarnpkg.com/lang/en/docs/install)).
+
+In order to run the application, you need the following applications:
+
+- Web browser: only Google Chrome 63+ web browser is supported;
+- HTTP client application (e.g. [Postman](https://www.getpostman.com/)).
 
 Here we provide the installation steps needed to install the required frameworks on Ubuntu Linux 16.04.
 
-```
+```bash
+sudo apt-get install git curl
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
+sudo apt-get update
+sudo apt-get install yarn
 ```
+### Cloning the repository
 
-### Configuring the Firebase Messaging client
-
-This application is aable to receive push notifications by the Firebase messaging service. The application contacts the Firebase
-API to obtain a token string and display it to the user.
-This token can be used to send push notifications to the user contacting the Firebase messaging service.
-
-In order to test the application, you need to have a Firebase account - further reference on [the Firebase website](https://firebase.google.com/) if needed.
-
-Once you created your Firebase account, you need to create or use a Firebase application to serve the Push Notifications client.
-If you need to create a Firebase application, open [your Firebase console](https://console.firebase.google.com),
-select "Add Project" and follow the instructions to create the application.
-
-Then, in the Firebase console, open your Firebase application. Select "Add Firebase to your Web app". The popup that will be shown displays the
-code snippet that the Push Notifications application needs to contact the Firebase API in order to subscribe to push notifications.
-The code that needs to be copied is highlighted in the following screenshot:
-
-![Screenshot](./utilities/screenshot.png)
-
-Replace the ```var firebaseConfig``` variable with the highlighted code in the following files: ```src/App.js```,  ```public/firebase-messaging-sw.js```. This way, the Push Notifications application will be able to contact the Firebase API.
-
-You're now ready to run the application.
-
-### Running the application
-
-First, clone this repository or download it. Then, reach the folder containing the downloaded files and
-run ```yarn start```.
-
-Here we provide the steps needed to run the application on Ubuntu Linux 16.04. Open a terminal and run the following commands:
+Once you installed the pre-required packages, you can proceed cloning the repository:
 
 ```
 git clone https://github.com/mrambler90/gv-push-notifications-client
 cd gv-push-notifications-client
-yarn start
+```
+
+The application receives push notifications from the Firebase platform. Before running the application, it's necessary to configure its code with a Firebase account.
+
+### Configuring the Firebase Messaging client
+
+This application is able to receive push notifications by the Firebase messaging service. The application contacts the Firebase
+API to obtain a token string and displays it to the user.
+This token can be used to send push notifications to the user by contacting the Firebase messaging service.
+
+In order to test the application, you need to have a Firebase account, whose free tier currently (July 2018) allows issuing a fair amount of push notifications.
+
+Firebase accounts are associated to a Google account. The Firebase registration procedure is very short: you can find further reference on [the Firebase website](https://firebase.google.com/).
+
+Once you created your Firebase account, you need to create or use a Firebase application to serve the Push Notifications client.
+If you need to create a Firebase application, open [your Firebase console](https://console.firebase.google.com), select "Add Project" and follow the instructions to create the application.
+You don't need to opt-in any option in this wizard: you only need to accept the Firebase terms of service.
+
+Then, in the Firebase console, open the Firebase application you just created. Select "Add Firebase to your Web app" in the center of the dashboard. The popup that will be shown displays the
+code snippet that the Push Notifications application needs in order to to contact the Firebase API to subscribe to push notifications. The code that needs to be copied is highlighted in the following screenshot:
+
+![Screenshot](./utilities/screenshot.png)
+
+Replace the ```firebaseConfig``` variable with the highlighted code in the following files: ```src/App.js```,  ```public/firebase-messaging-sw.js```. This way, the Push Notifications application will be able to contact the Firebase API.
+
+You're now ready to run the application.
+
+## Running the application
+
+First, open a terminal and reach the root folder of the cloned repository. Then, run:
+
+```
+yarn && yarn start
 ```
 
 The application should be started, and a new browser tab containing the running application should be automatically opened.
 Usually the application runs on ```localhost:3000``` (or on a different port, if port 3000 is held by another running process).
-Check the output of the ```yarn build``` command to determine the correct internet address of the Push Notifications application.
+Check the output of the ```yarn start``` command to determine the correct internet address of the Push Notifications application.
 
 ### Generating a push notifications token
 
@@ -70,7 +83,7 @@ which will be displayed in the application window.
 
 ![Token](./utilities/token.png)
 
-You will need this token to send push notifications to the application. You can copy it into your clipboard by pushing the Copy Token button.
+You will need this token to send push notifications to the application. You can copy it into your clipboard by pushing the **Copy Token** button.
 
 ### Sending a push notification to the application
 
