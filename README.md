@@ -57,9 +57,9 @@ You don't need to opt-in any option in this wizard: you only need to accept the 
 Then, in the Firebase console, open the Firebase application you just created. Select "Add Firebase to your Web app" in the center of the dashboard. The popup that will be shown displays the
 code snippet that the Push Notifications application needs in order to to contact the Firebase API to subscribe to push notifications. The code that needs to be copied is highlighted in the following screenshot:
 
-![Screenshot](./utilities/screenshot.png)
+![Screenshot](./utilities/credentials.png)
 
-Replace the ```firebaseConfig``` variable with the highlighted code in the following files: ```src/App.js```,  ```public/firebase-messaging-sw.js```. This way, the Push Notifications application will be able to contact the Firebase API.
+Replace the definition of the ```firebaseConfig``` variable with the highlighted code in the following files: ```src/App.js```,  ```public/firebase-messaging-sw.js```. This way, the Push Notifications application will be able to contact the Firebase API.
 
 You're now ready to run the application.
 
@@ -81,7 +81,7 @@ In the application window, push the switch button. The web browser will ask you 
 Once this permission is granted, the application will interact with the Firebase application you defined, and it will obtain a token
 which will be displayed in the application window.
 
-![Token](./utilities/token.png)
+![Token](./utilities/app_token.png)
 
 You will need this token to send push notifications to the application. You can copy it into your clipboard by pushing the **Copy Token** button.
 
@@ -117,13 +117,16 @@ Your Firebase API key is present in the apiKey parameter of the Firebase configu
 You may use any HTTP client application to issue this HTTP request - such as [Postman](https://www.getpostman.com/). Once the HTTP request
 is correctly sent, you should see that the push notification is received by the web browser.
 
-## For the devs: TODO list
+Here's an example of the HTTP REST call execution with Postman:
 
-- Show a loading splash screen for long-waiting operations (e.g. Firebase API invocations)
-- Consider the case in which the application could not contact the Firebase API (e.g. it is offline)
-- Move the Firebase API configuration into a single configuration file
-- Make the application a Progressive Web Application
-- Graphical refinements:
-	- Show a [Snackbar](https://material-ui.com/demos/snackbars/) when the *Copy Token* button is pressed
+![Screen1](./utilities/HTTP_screen1.png)
+![Screen2](./utilities/HTTP_screen2.png)
+![Screen3](./utilities/HTTP_screen3.png)
+
+After pushing the Send button in the Postman window, the following push notification will pop up:
+
+![Notification](./utilities/notification.png)
+
+## Note
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
