@@ -17,20 +17,22 @@ var firebaseConfig = {
 // initialize the firebase component with the given settings
 firebase.initializeApp(firebaseConfig);
 
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
+// retrieve an instance of Firebase Messaging so that it can handle background messages
 const messaging = firebase.messaging();
+
+// load the application icon
+var icon = './logo_gv.png';
+
 messaging.setBackgroundMessageHandler(payload => {
     
-    const notificationEnvelop = JSON.parse(payload.data.notification);
+    const notificationEnvelop = JSON.parse(payload.data.notification);  
 
     const title = notificationEnvelop.title;
     const options = {
-        body: notificationEnvelop.body
-        // TODO icon
+        body: notificationEnvelop.body,
+        icon: icon
     };
 
     self.registration.showNotification(title, options);
 
 });
-
