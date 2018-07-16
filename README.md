@@ -6,12 +6,13 @@ This is a React application used to test the subscription to a push notification
 
 ### Prerequisites
 
-In order to run the Push Notifications client, you need to install the following frameworks:
+In order to build and run the Push Notifications client, you need to install the following frameworks:
 
 - Node.js v9.8.0 or higher ([installation docs](https://nodejs.org/en/download/package-manager/));
-- Yarn package manager v1.7.0 or higher ([installation docs](https://yarnpkg.com/lang/en/docs/install)).
+- Yarn package manager v1.7.0 or higher ([installation docs](https://yarnpkg.com/lang/en/docs/install));
+- A [Firebase](https://firebase.google.com/) API key to consume the [Firebase Cloud Messaging](https://firebase.google.com/products/cloud-messaging/) service.
 
-In order to run the application, you need the following applications:
+In order to test the features of the application, you need the following applications:
 
 - Web browser: only Google Chrome 63+ web browser is supported;
 - HTTP client application (e.g. [Postman](https://www.getpostman.com/)).
